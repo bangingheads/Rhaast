@@ -704,6 +704,305 @@ export interface MatchV4TeamStatsDTO {
      */
     dragonKills?: number // int32
 }
+export interface MatchV5MatchDTO {
+    metadata?: MatchV5MetadataDTO
+    info?: MatchV5MatchInfoDTO
+}
+export interface MatchV5MetadataDTO {
+    dataVersion?: string
+    matchId?: string
+    participants?: string[]
+}
+export interface MatchV5MatchInfoDTO {
+    gameCreation?: number
+    gameDuration?: number
+    gameId?: number
+    gameMode?: string
+    gameName?: string
+    gameStartTimestamp?: number
+    gameType?: string
+    gameVersion?: string
+    mapId?: number
+    participants?: MatchV5ParticipantDTO[]
+    platformId?: string
+    queueId?: number
+    teams?: MatchV5TeamsDTO[]
+    tournamentCode?: string
+}
+export interface MatchV5TeamsDTO {
+    bans?: MatchV5TeamsBansDTO[]
+    objectives?: MatchV5ObjectivesDTO
+    teamId?: number
+    win?: boolean
+}
+export interface MatchV5ObjectivesDTO {
+    baron?: MatchV5ObjectiveDetailsDTO
+    champion?: MatchV5ObjectiveDetailsDTO
+    dragon?: MatchV5ObjectiveDetailsDTO
+    inhibitor?: MatchV5ObjectiveDetailsDTO
+    riftHerald?: MatchV5ObjectiveDetailsDTO
+    tower?: MatchV5ObjectiveDetailsDTO
+}
+export interface MatchV5ObjectiveDetailsDTO {
+    first?: boolean
+    kills?: number
+}
+export interface MatchV5TeamsBansDTO {
+    championId?: number
+    pickturn?: number
+}
+export interface MatchV5ParticipantDTO {
+    assists?: number
+    baronKills?: number
+    bountyLevel?: number
+    champExperience?: number
+    champLevel?: number
+    championId?: number
+    championName?: string
+    championTransform?: number
+    consumablesPurchased?: number
+    damageDealtToBuildings?: number
+    damageDealtToObjectives?: number
+    damageDealtToTurrets?: number
+    damageSelfMitigated?: number
+    deaths?: number
+    detectorWardsPlaced?: number
+    doubleKills?: number
+    dragonKills?: number
+    firstBloodAssist?: boolean
+    firstBloodKill?: boolean
+    firstTowerAssist?: boolean
+    firstTowerKill?: boolean
+    gameEndedInEarlySurrender?: boolean
+    gameEndedInSurrender?: boolean
+    goldEarned?: number
+    goldSpent?: number
+    individualPosition?: string
+    inhibitorKills?: number
+    inhibitorTakedowns?: number
+    inhibitorsLost?: number
+    item0?: number
+    item1?: number
+    item2?: number
+    item3?: number
+    item4?: number
+    item5?: number
+    item6?: number
+    itemsPurchased?: number
+    killingSprees?: number
+    kills?: number
+    lane?: string
+    largestCriticalStrike?: number
+    largestKillingSpree?: number
+    largestMultiKill?: number
+    longestTimeSpentLiving?: number
+    magicDamageDealt?: number
+    magicDamageDealtToChampions?: number
+    magicDamageTaken?: number
+    neutralMinionsKilled?: number
+    nexusKills?: number
+    nexusTakedowns?: number
+    nexusLost?: number
+    objectivesStolen?: number
+    objectivesStolenAssists?: number
+    participantId?: number
+    pentaKills?: number
+    perks?: MatchV5PerksDTO
+    physicalDamageDealt?: number
+    physicalDamageDealtToChampions?: number
+    physicalDamageTaken?: number
+    profileIcon?: number
+    puuid?: string
+    quadraKills?: number
+    riotIdName?: string
+    riotIdTagline?: string
+    role?: string
+    sightWardsBoughtInGame?: number
+    spell1Casts?: number
+    spell2Casts?: number
+    spell3Casts?: number
+    spell4Casts?: number
+    summoner1Casts?: number
+    summoner1Id?: number
+    summoner2Casts?: number
+    summoner2Id?: number
+    summonerId?: string
+    summonerLevel?: number
+    summonerName?: string
+    teamEarlySurrendered?: true
+    teamId?: number
+    teamPosition?: string
+    timeCCingOthers?: number
+    timePlayed?: number
+    totalDamageDealt?: number
+    totalDamageDealtToChampions?: number
+    totalDamageShieldedOnTeammates?: number
+    totalDamageTaken?: number
+    totalHeal?: number
+    totalHealsOnTeammates?: number
+    totalMinionsKilled?: number
+    totalTimeCCDealt?: number
+    totalTimeSpentDead?: number
+    totalUnitsHealed?: number
+    tripleKills?: number
+    trueDamageDealt?: number
+    trueDamageDealtToChampions?: number
+    trueDamageTaken?: number
+    turretKills?: number
+    turretTakedowns?: number
+    turretsLost?: number
+    unrealKills?: number
+    visionScore?: number
+    visionWardsBoughtInGame?: number
+    wardsKilled?: number
+    wardsPlaced?: number
+    win?: true
+}
+export interface MatchV5PerksDTO {
+    statperks?: MatchV5StatPerksDTO
+    styles?: MatchV5PerkStylesDTO[]
+}
+export interface MatchV5PerkStylesDTO {
+    description?: string
+    selections?: MatchV5PerkStylesSelectionsDTO[]
+    style?: number
+}
+export interface MatchV5PerkStylesSelectionsDTO {
+    perk?: number
+    var1?: number
+    var2?: number
+    var3?: number
+}
+export interface MatchV5StatPerksDTO {
+    defense?: number
+    flex?: number
+    offense?: number
+}
+export interface MatchV5MatchTimelineDTO {
+    metadata?: MatchV5MetadataDTO
+    info?: MatchV5TimelineInfoDTO
+}
+export interface MatchV5TimelineInfoDTO {
+    frameInterval?: number
+    frames?: MatchV5TimelineFramesDTO[]
+    gameId?: number
+}
+export interface MatchV5TimelineFramesDTO {
+    events?: MatchV5TimelineEventsDTO[]
+    participantFrames?: { [name: string]: MatchV4MatchParticipantFrameDTO }
+    timestamp?: number
+    participants?: MatchV5TimelinePartipantDTO[]
+}
+export interface MatchV5TimelinePartipantDTO {
+    participantId?: number
+    puuid?: string
+}
+export interface MatchV5TimelineParticipantFramesDTO {
+    championStats?: MatchV5TimelineChampionStatsDTO
+    currentGold?: number
+    damageStats?: MatchV5TimelineDamageStatsDTO
+    goldPerSecond?: number
+    jungleMinionsKilled?: number
+    level?: number
+    minionsKilled?: number
+    participantId?: number
+    position?: MatchV5TimelinePositionDTO
+    timeEnemySpentControlled?: number
+    totalGold?: number
+    xp?: number
+}
+export interface MatchV5TimelineDamageStatsDTO {
+    magicDamageDone?: number
+    magicDamageDoneToChampions?: number
+    magicDamageTaken?: number
+    physicalDamageDone?: number
+    physicalDamageDoneToChampions?: number
+    physicalDamageTaken?: number
+    totalDamageDone?: number
+    totalDamageZDonetoChampions?: number
+    totalDamageTaken?: number
+    trueDamageDone?: number
+    trueDamageDoneToChampions?: number
+    trueDamageTaken?: number
+}
+export interface MatchV5TimelineChampionStatsDTO {
+    abilityHaste?: number
+    abilityPower?: number
+    armor?: number
+    armorPen?: number
+    armorPenPercent?: number
+    attackDamage?: number
+    attackSpeed?: number
+    bonusArmorPenPercent?: number
+    bonusMagicPenPercent?: number
+    ccReduction?: number
+    cooldownReduction?: number
+    health?: number
+    healthMax?: number
+    healthRegen?: number
+    lifesteal?: number
+    magicPen?: number
+    magicPenPercent?: number
+    magicResist?: number
+    movementSpeed?: number
+    omnivamp?: number
+    physicalVamp?: number
+    power?: number
+    powerMax?: number
+    powerRegen?: number
+    spellVamp?: number
+}
+export interface MatchV5TimelineEventsDTO {
+    realTimestamp?: number
+    timestamp?: number
+    type?: string
+    itemId?: number
+    participantId?: number
+    levelUpType?: string
+    skillSlot?: number
+    creatorId?: number
+    wardType?: string
+    level?: number
+    assistingParticipantIds?: number[]
+    bounty?: number
+    killStreakLength?: number
+    killerId?: number
+    position?: MatchV5TimelinePositionDTO
+    victimDamageDealt?: MatchV5TimelineVictimDamageDTO[]
+    victimDamageReceived?: MatchV5TimelineVictimDamageDTO[]
+    victimId?: number
+    killType?: string
+    laneType?: string
+    teamId?: number
+    multiKillLength?: number
+    killerTeamId?: number
+    monsterType?: string
+    monsterSubType?: string
+    buildingType?: string
+    towerType?: string
+    afterId?: number
+    beforeId?: number
+    goldGain?: number
+    gameId?: number
+    winningTeam?: number
+    transformType?: string
+    name?: string
+}
+export interface MatchV5TimelineVictimDamageDTO {
+    basic?: boolean
+    magicDamage?: number
+    name?: string
+    participantId?: number
+    physicalDamage?: number
+    spellName?: string
+    spellSlot?: number
+    trueDamage?: number
+    type?: string
+}
+export interface MatchV5TimelinePositionDTO {
+    x?: number
+    y?: number
+}
 export interface SpectatorV4BannedChampion {
     /**
      * The turn during which the champion was banned

@@ -68,6 +68,11 @@ Match.timeline(matchID: int)
 Match.Tournament.listMatchIDs(tournamentCode: string)
 Match.Tournament.get(matchID: int, tournamentCode: string)
 
+/* MATCH-V5 */
+MatchV5.get(matchID: string)
+MatchV5.timeline(matchID: string)
+MatchlistV5.by.puuid(puuid: string)
+
 /* SPECTATOR-V4 */
 CurrentGame.by.summonerID(summonerID: string)
 FeaturedGames.list()

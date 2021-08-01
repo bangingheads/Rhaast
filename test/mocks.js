@@ -20,6 +20,9 @@ module.exports = {
     match: {
         id: 1234567,
     },
+    matchV5: {
+        id: 'NA1_3978272867'
+    },
     league: {
         uuid: '1a3cc7ff-9b40-3927-b646-8d777e97148a',
     },

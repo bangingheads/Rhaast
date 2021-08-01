@@ -99,6 +99,11 @@ declare module 'kayn' {
             }
         }
 
+        public MatchV5: {
+            get: (matchID: string) => KaynRequest<dtos.MatchV5MatchDTO>
+            timeline: (matchID: string) => KaynRequest<dtos.MatchV5MatchTimelineDTO>
+        }
+
         public Matchlist: {
             by: {
                 accountID: (accountID: string) => KaynRequest<dtos.MatchV4MatchlistDTO>
@@ -107,6 +112,12 @@ declare module 'kayn' {
                 by: {
                     accountID: (accountID: string) => KaynRequest<dtos.MatchV4MatchlistDTO>
                 }
+            }
+        }
+
+        public MatchlistV5: {
+            by: {
+                puuid: (puuid: string) => KaynRequest<string[]>
             }
         }
 
