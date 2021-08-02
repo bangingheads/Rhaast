@@ -141,39 +141,36 @@ export interface LeagueV4MiniSeriesDTO {
     target?: number // int32
     wins?: number // int32
 }
-export interface LolStatusV3Incident {
-    active?: boolean
-    created_at?: string
-    id?: number // int64
-    updates?: LolStatusV3Message[]
-}
-export interface LolStatusV3Message {
-    severity?: string
-    author?: string
-    created_at?: string
-    translations?: LolStatusV3Translation[]
-    updated_at?: string
-    content?: string
+export interface LolStatusV4PlatformDataDTO {
     id?: string
-}
-export interface LolStatusV3Service {
-    status?: string
-    incidents?: LolStatusV3Incident[]
     name?: string
-    slug?: string
-}
-export interface LolStatusV3ShardStatus {
-    name?: string
-    region_tag?: string
-    hostname?: string
-    services?: LolStatusV3Service[]
-    slug?: string
     locales?: string[]
+    maintenances?: LolStatusV4StatusDTO[]
+    incidents?: LolStatusV4StatusDTO[]
 }
-export interface LolStatusV3Translation {
+export interface LolStatusV4StatusDTO {
+    id?: number
+    maintenance_status?: "scheduled" | "in_progress" | "complete"
+    incident_severity?: "info" | "warning" | "critical"
+    titles?: LolStatusV4ContentDTO
+    updates?: LolStatusV4UpdateDTO
+    created_at?: string
+    archive_at?: string
+    updated_at?: string
+    platforms?: string[]
+}
+export interface LolStatusV4ContentDTO {
     locale?: string
     content?: string
-    heading?: string
+}
+export interface LolStatusV4UpdateDTO {
+    id?: number
+    author?: string
+    publish?: boolean
+    publish_locations?: string[]
+    translations?: LolStatusV4ContentDTO[]
+    created_at?: string
+    updated_at?: string
 }
 export interface MatchV4MasteryDTO {
     masteryId?: number // int32

@@ -20,11 +20,11 @@ describe('StatusEndpoint', function() {
             expect(payload).to.deep.equal({
                 method: 'GET',
                 serviceName: 'status',
-                endpoint: 'shard-data',
+                endpoint: 'platform-data',
                 query: [],
                 region: '',
                 isTournament: false,
-                version: 3,
+                version: 4,
                 apiURLPrefix: 'https://%s.api.riotgames.com',
             })
         })
