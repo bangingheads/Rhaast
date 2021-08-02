@@ -1,11 +1,11 @@
 A small Node.js library to work with Riot's League of Legend's API.
 
-[![NPM](https://nodei.co/npm/kayn.png)](https://nodei.co/npm/kayn/)
+[![NPM](https://nodei.co/npm/rhaast.png)](https://nodei.co/npm/rhaast/)
 
-[![Build Status](https://travis-ci.org/cnguy/kayn.svg?branch=master)](https://travis-ci.org/cnguy/kayn)
-[![API Cov. Badge](/_pictures/api_cov.png?raw=true "API Cov. Badge")](https://github.com/cnguy/kayn/blob/master/ENDPOINTS.md)
-[![codecov](https://codecov.io/gh/cnguy/kayn/branch/master/graph/badge.svg)](https://codecov.io/gh/cnguy/kayn)
-[![dependencies Status](https://david-dm.org/cnguy/kayn/status.svg)](https://david-dm.org/cnguy/kayn)
+[![Build Status](https://api.travis-ci.com/bangingheads/Rhaast.svg?branch=master)](https://travis-ci.org/bangingheads/rhaast)
+[![API Cov. Badge](/_pictures/api_cov.png?raw=true "API Cov. Badge")](https://github.com/bangingheads/rhaast/blob/master/ENDPOINTS.md)
+[![codecov](https://codecov.io/gh/bangingheads/rhaast/branch/master/graph/badge.svg)](https://codecov.io/gh/bangingheads/rhaast)
+[![dependencies Status](https://david-dm.org/bangingheads/rhaast/status.svg)](https://david-dm.org/bangingheads/rhaast)
 
 <details><summary>Simple example using promises and callbacks</summary>
 

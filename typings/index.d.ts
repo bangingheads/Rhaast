@@ -1,162 +1,160 @@
 import * as dtos from './dtos'
 import * as ddragonDtos from './ddragon-dtos'
 
-declare module 'kayn' {
-    export function Kayn(key?: string): (config?: KaynConfig) => KaynClass
+export function Kayn(key?: string): (config?: KaynConfig) => KaynClass
 
-    class KaynClass {
-        flushCache(cb?: callback<'OK'>): Promise<'OK'>
+declare class KaynClass {
+    flushCache(cb?: callback<'OK'>): Promise<'OK'>
 
-        public ChampionMastery: {
-            get: (summonerID: string) => (championID: number) => KaynRequest<dtos.ChampionMasteryV4ChampionMasteryDTO>
-            list: (summonerID: number) => KaynRequest<dtos.ChampionMasteryV4ChampionMasteryDTO[]>
-            totalScore: (summonerID: number) => KaynRequest<number>
+    public ChampionMastery: {
+        get: (summonerID: string) => (championID: number) => KaynRequest<dtos.ChampionMasteryV4ChampionMasteryDTO>
+        list: (summonerID: number) => KaynRequest<dtos.ChampionMasteryV4ChampionMasteryDTO[]>
+        totalScore: (summonerID: number) => KaynRequest<number>
+    }
+
+    public Champion: {
+        Rotation: {
+            list: () => KaynRequest<dtos.ChampionV3ChampionInfo>
+        }
+    }
+
+    public Challenger: {
+        list: (queueName: queueName) => KaynRequest<dtos.LeagueV4LeagueListDTO>
+    }
+
+    public CurrentGame: {
+        by: {
+            summonerID: (summonerID: string) => KaynRequest<dtos.SpectatorV4CurrentGameInfo>
+        }
+    }
+
+    public DDragon: {
+        Champion: {
+            get: (championName: string) => KaynDDragonRequest<ddragonDtos.DDragonChampionDTO>
+            list: () => KaynDDragonRequest<ddragonDtos.DDragonChampionListDTO>
+            listFull: () => KaynDDragonRequest<ddragonDtos.DDragonChampionDTO>
+            getDataById: () => KaynDDragonRequest<ddragonDtos.DDragonChampionDTO>
+            getDataByIdWithParentAsId: () => KaynDDragonRequest<ddragonDtos.DDragonChampionDTO>
+            listDataById: () => KaynDDragonRequest<ddragonDtos.DDragonChampionListDTO>
+            listDataByIdWithParentAsId: () => KaynDDragonRequest<ddragonDtos.DDragonChampionListDTO>
+            listFullDataById: () => KaynDDragonRequest<ddragonDtos.DDragonChampionDTO>
+            listFullDataByIdWithParentAsId: () => KaynDDragonRequest<ddragonDtos.DDragonChampionDTO>
+        }
+        Item: {
+            list: () => KaynDDragonRequest<ddragonDtos.DDragonItemWrapperDTO>
+        }
+        Language: {
+            list: () => KaynDDragonRequest<string[]>
+        }
+        LanguageString: {
+            list: () => KaynDDragonRequest<ddragonDtos.DDragonLanguageStringDTO>
+        }
+        Map: {
+            list: () => KaynDDragonRequest<ddragonDtos.DDragonMapDTO>
+        }
+        ProfileIcon: {
+            list: () => KaynDDragonRequest<ddragonDtos.DDragonProfileIconDTO>
+        }
+        Realm: {
+            list: (region: region) => KaynDDragonRequest<ddragonDtos.DDragonRealmsDTO>
+        }
+        RunesReforged: {
+            list: () => KaynDDragonRequest<ddragonDtos.DDragonRunesReforgedDTO[]>
+        }
+        SummonerSpell: {
+            list: () => KaynDDragonRequest<ddragonDtos.DDragonSummonerSpellDTO>
+        }
+        Version: {
+            list: () => KaynDDragonRequest<string[]>
+        }
+    }
+
+    public League: {
+        by: {
+            uuid: (leagueUUID: string) => KaynRequest<dtos.LeagueV4LeagueListDTO>
         }
 
-        public Champion: {
-            Rotation: {
-                list: () => KaynRequest<dtos.ChampionV3ChampionInfo>
-            }
-        }
-
-        public Challenger: {
-            list: (queueName: queueName) => KaynRequest<dtos.LeagueV4LeagueListDTO>
-        }
-
-        public CurrentGame: {
+        Entries: {
             by: {
-                summonerID: (summonerID: string) => KaynRequest<dtos.SpectatorV4CurrentGameInfo>
+                summonerID: (encryptedSummonerID: string) => KaynRequest<dtos.LeagueV4LeagueEntryDTO[]>
             }
+            list: (queue: queueName, tier: string, division: string) => KaynRequest<dtos.LeagueV4LeagueEntryDTO[]>
         }
+    }
 
-        public DDragon: {
-            Champion: {
-                get: (championName: string) => KaynDDragonRequest<ddragonDtos.DDragonChampionDTO>
-                list: () => KaynDDragonRequest<ddragonDtos.DDragonChampionListDTO>
-                listFull: () => KaynDDragonRequest<ddragonDtos.DDragonChampionDTO>
-                getDataById: () => KaynDDragonRequest<ddragonDtos.DDragonChampionDTO>
-                getDataByIdWithParentAsId: () => KaynDDragonRequest<ddragonDtos.DDragonChampionDTO>
-                listDataById: () => KaynDDragonRequest<ddragonDtos.DDragonChampionListDTO>
-                listDataByIdWithParentAsId: () => KaynDDragonRequest<ddragonDtos.DDragonChampionListDTO>
-                listFullDataById: () => KaynDDragonRequest<ddragonDtos.DDragonChampionDTO>
-                listFullDataByIdWithParentAsId: () => KaynDDragonRequest<ddragonDtos.DDragonChampionDTO>
-            }
-            Item: {
-                list: () => KaynDDragonRequest<ddragonDtos.DDragonItemWrapperDTO>
-            }
-            Language: {
-                list: () => KaynDDragonRequest<string[]>
-            }
-            LanguageString: {
-                list: () => KaynDDragonRequest<ddragonDtos.DDragonLanguageStringDTO>
-            }
-            Map: {
-                list: () => KaynDDragonRequest<ddragonDtos.DDragonMapDTO>
-            }
-            ProfileIcon: {
-                list: () => KaynDDragonRequest<ddragonDtos.DDragonProfileIconDTO>
-            }
-            Realm: {
-                list: (region: region) => KaynDDragonRequest<ddragonDtos.DDragonRealmsDTO>
-            }
-            RunesReforged: {
-                list: () => KaynDDragonRequest<ddragonDtos.DDragonRunesReforgedDTO[]>
-            }
-            SummonerSpell: {
-                list: () => KaynDDragonRequest<ddragonDtos.DDragonSummonerSpellDTO>
-            }
-            Version: {
-                list: () => KaynDDragonRequest<string[]>
-            }
+    public Master: {
+        list: (queueName: queueName) => KaynRequest<dtos.LeagueV4LeagueListDTO>
+    }
+
+    public Grandmaster: {
+        list: (queueName: queueName) => KaynRequest<dtos.LeagueV4LeagueListDTO>
+    }
+
+    public Match: {
+        get: (matchID: number) => KaynRequest<dtos.MatchV4MatchDTO>
+        timeline: (matchID: number) => KaynRequest<dtos.MatchV4MatchTimelineDTO>
+
+        Tournament: {
+            listMatchIDs: (tournamentCode: string) => KaynRequest<number[]>
+            get: (matchID: number, tournamentCode: string) => KaynRequest<dtos.MatchV4MatchDTO>
         }
+    }
 
-        public League: {
-            by: {
-                uuid: (leagueUUID: string) => KaynRequest<dtos.LeagueV4LeagueListDTO>
-            }
+    public MatchV5: {
+        get: (matchID: string) => KaynRequest<dtos.MatchV5MatchDTO>
+        timeline: (matchID: string) => KaynRequest<dtos.MatchV5MatchTimelineDTO>
+    }
 
-            Entries: {
-                by: {
-                    summonerID: (encryptedSummonerID: string) => KaynRequest<dtos.LeagueV4LeagueEntryDTO[]>
-                }
-                list: (queue: queueName, tier: string, division: string) => KaynRequest<dtos.LeagueV4LeagueEntryDTO[]>
-            }
+    public Matchlist: {
+        by: {
+            accountID: (accountID: string) => KaynRequest<dtos.MatchV4MatchlistDTO>
         }
-
-        public Master: {
-            list: (queueName: queueName) => KaynRequest<dtos.LeagueV4LeagueListDTO>
-        }
-
-        public Grandmaster: {
-            list: (queueName: queueName) => KaynRequest<dtos.LeagueV4LeagueListDTO>
-        }
-
-        public Match: {
-            get: (matchID: number) => KaynRequest<dtos.MatchV4MatchDTO>
-            timeline: (matchID: number) => KaynRequest<dtos.MatchV4MatchTimelineDTO>
-
-            Tournament: {
-                listMatchIDs: (tournamentCode: string) => KaynRequest<number[]>
-                get: (matchID: number, tournamentCode: string) => KaynRequest<dtos.MatchV4MatchDTO>
-            }
-        }
-
-        public MatchV5: {
-            get: (matchID: string) => KaynRequest<dtos.MatchV5MatchDTO>
-            timeline: (matchID: string) => KaynRequest<dtos.MatchV5MatchTimelineDTO>
-        }
-
-        public Matchlist: {
+        Recent: {
             by: {
                 accountID: (accountID: string) => KaynRequest<dtos.MatchV4MatchlistDTO>
             }
-            Recent: {
-                by: {
-                    accountID: (accountID: string) => KaynRequest<dtos.MatchV4MatchlistDTO>
-                }
-            }
         }
+    }
 
-        public MatchlistV5: {
-            by: {
-                puuid: (puuid: string) => KaynRequest<string[]>
-            }
+    public MatchlistV5: {
+        by: {
+            puuid: (puuid: string) => KaynRequest<string[]>
         }
+    }
 
-        public Status: {
-            get: () => KaynRequest<dtos.LolStatusV3ShardStatus>
-        }
+    public Status: {
+        get: () => KaynRequest<dtos.LolStatusV3ShardStatus>
+    }
 
-        public Summoner: {
-            by: {
-                name: (name: string) => KaynRequest<dtos.SummonerV4SummonerDTO>
-                id: (id: string) => KaynRequest<dtos.SummonerV4SummonerDTO>
-                puuid: (id: string) => KaynRequest<dtos.SummonerV4SummonerDTO>
-                accountID: (accountID: string) => KaynRequest<dtos.SummonerV4SummonerDTO>
-            }
+    public Summoner: {
+        by: {
+            name: (name: string) => KaynRequest<dtos.SummonerV4SummonerDTO>
+            id: (id: string) => KaynRequest<dtos.SummonerV4SummonerDTO>
+            puuid: (id: string) => KaynRequest<dtos.SummonerV4SummonerDTO>
+            accountID: (accountID: string) => KaynRequest<dtos.SummonerV4SummonerDTO>
         }
+    }
 
-        public ThirdPartyCode: {
-            by: {
-                summonerID: (id: string) => KaynRequest<string>
-            }
+    public ThirdPartyCode: {
+        by: {
+            summonerID: (id: string) => KaynRequest<string>
         }
+    }
 
-        public TournamentStub: {
-            create: (tournamentID: number, body?: dtos.TournamentStubV4TournamentCodeParameters) => KaynRequest<string[]>
-            lobbyEvents: (tournamentCode: string) => KaynRequest<dtos.TournamentStubV4LobbyEventDTOWrapper>
-            registerProviderData: (region: string, callbackURL: string) => KaynRequest<number>
-            register: (providerID: number, name?: string) => KaynRequest<number>
-        }
+    public TournamentStub: {
+        create: (tournamentID: number, body?: dtos.TournamentStubV4TournamentCodeParameters) => KaynRequest<string[]>
+        lobbyEvents: (tournamentCode: string) => KaynRequest<dtos.TournamentStubV4LobbyEventDTOWrapper>
+        registerProviderData: (region: string, callbackURL: string) => KaynRequest<number>
+        register: (providerID: number, name?: string) => KaynRequest<number>
+    }
 
-        public Tournament: {
-            create: (tournamentID: number, body?: dtos.TournamentV4TournamentCodeParameters) => KaynRequest<string[]>
-            update: (tournamentCode: string, body: dtos.TournamentV4TournamentCodeUpdateParameters) => KaynRequest<void>
-            get: (tournamentCode: string) => KaynRequest<dtos.TournamentV4TournamentCodeDTO>
-            lobbyEvents: (tournamentCode: string) => KaynRequest<dtos.TournamentV4LobbyEventDTOWrapper>
-            registerProviderData: (region: string, callbackURL: string) => KaynRequest<number>
-            register: (providerID: number, name?: string) => KaynRequest<number>
-        }
+    public Tournament: {
+        create: (tournamentID: number, body?: dtos.TournamentV4TournamentCodeParameters) => KaynRequest<string[]>
+        update: (tournamentCode: string, body: dtos.TournamentV4TournamentCodeUpdateParameters) => KaynRequest<void>
+        get: (tournamentCode: string) => KaynRequest<dtos.TournamentV4TournamentCodeDTO>
+        lobbyEvents: (tournamentCode: string) => KaynRequest<dtos.TournamentV4LobbyEventDTOWrapper>
+        registerProviderData: (region: string, callbackURL: string) => KaynRequest<number>
+        register: (providerID: number, name?: string) => KaynRequest<number>
     }
 }
 
