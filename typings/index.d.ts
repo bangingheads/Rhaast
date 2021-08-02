@@ -123,7 +123,7 @@ declare class KaynClass {
     }
 
     public Status: {
-        get: () => KaynRequest<dtos.LolStatusV3ShardStatus>
+        get: () => KaynRequest<dtos.LolStatusV4PlatformDataDTO>
     }
 
     public Summoner: {
