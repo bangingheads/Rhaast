@@ -24,7 +24,7 @@ describe('MatchlistEndpointV5', function () {
                 query: [],
                 region: '',
                 isTournament: true,
-                version: 4,
+                version: 5,
                 apiURLPrefix: 'https://%s.api.riotgames.com',
             })
         })
